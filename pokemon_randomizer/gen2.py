@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .core import BaseRandomizer
+from .core import StructuredRandomizer
 from .wild import WildEntryDefinition, WildTableDefinition, find_wild_table, randomize_table
 
 
@@ -21,7 +21,7 @@ def _water_species_offsets() -> tuple[int, ...]:
     return (2, 4, 6)
 
 
-class Gen2Randomizer(BaseRandomizer):
+class Gen2Randomizer(StructuredRandomizer):
     max_species = 251
     legendary_species = (
         144,
@@ -36,6 +36,20 @@ class Gen2Randomizer(BaseRandomizer):
         250,
         251,
     )
+
+    TRAINER_TABLE_OFFSET = 0x3000
+    TRAINER_PARTY_SIZE = 4
+    STARTER_OFFSET = 0x3100
+    STARTER_COUNT = 3
+    STATIC_TABLE_OFFSET = 0x3110
+    SHOP_TABLE_OFFSET = 0x3200
+    SHOP_ITEM_COUNT = 5
+    MOVESET_TABLE_OFFSET = 0x3300
+    MOVES_PER_SPECIES = 5
+    TYPING_TABLE_OFFSET = 0x3400
+    EVOLUTION_TABLE_OFFSET = 0x3500
+    TMHM_TABLE_OFFSET = 0x3600
+    BASE_STATS_TABLE_OFFSET = 0x3700
 
     WILD_TABLES = (
         WildTableDefinition(
