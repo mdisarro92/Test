@@ -1,0 +1,23 @@
+[project]
+name = "pokemon-randomizer-gb"
+version = "0.1.0"
+description = "Randomize wild Pokémon encounters in Generation I and II Game Boy games"
+requires-python = ">=3.10"
+authors = [
+  {name = "OpenAI Assistant"}
+]
+readme = "README.md"
+keywords = ["pokemon", "randomizer", "gameboy"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
+  "Topic :: Games/Entertainment"
+]
+
+[project.scripts]
+pokemon-randomizer = "pokemon_randomizer.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
