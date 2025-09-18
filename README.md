@@ -34,6 +34,20 @@ own legal backups of the games you wish to randomize.
    Use the same command with Generation II ROMs; the tool will automatically
    detect the generation.
 
+### Launching the graphical interface
+
+Prefer a windowed experience? Install the project and run:
+
+```bash
+pokemon-randomizer-gui
+```
+
+The GUI includes browse buttons for the ROM you want to randomize and the
+location where the modified ROM should be written. You can optionally supply a
+seed, toggle legendary encounters, or disable wild encounter randomization.
+Status messages appear at the bottom of the window so you immediately know when
+the process succeeds or if the provided paths need attention.
+
 ### Useful command line flags
 
 * `--seed 12345` – specify a seed for reproducible results. Any string or

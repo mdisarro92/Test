@@ -7,7 +7,8 @@ import sys
 from pathlib import Path
 from typing import Iterable
 
-from .core import RandomizationOptions, randomize_rom
+from .core import randomize_rom
+from .options import build_options, resolve_paths
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -46,20 +47,21 @@ def main(argv: Iterable[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(list(argv) if argv is not None else None)
 
-    options = RandomizationOptions(
+    rom_path, output_path = resolve_paths(args.rom, args.output)
+    options = build_options(
         seed=args.seed,
-        randomize_wild=not args.no_wild,
         allow_legendaries=args.allow_legendaries,
+        disable_wild=args.no_wild,
     )
 
     try:
-        info = randomize_rom(args.rom, args.output, options)
+        info = randomize_rom(rom_path, output_path, options)
     except FileNotFoundError as exc:
         parser.error(str(exc))
     except ValueError as exc:
         parser.error(str(exc))
 
-    if not args.no_wild:
+    if options.randomize_wild:
         feature_summary = "wild encounters"
     else:
         feature_summary = "no features"
