@@ -17,6 +17,7 @@ classifiers = [
 
 [project.scripts]
 pokemon-randomizer = "pokemon_randomizer.cli:main"
+pokemon-randomizer-gui = "pokemon_randomizer.gui:main"
 
 [build-system]
 requires = ["setuptools>=61"]
