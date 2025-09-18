@@ -48,6 +48,38 @@ seed, toggle legendary encounters, or disable wild encounter randomization.
 Status messages appear at the bottom of the window so you immediately know when
 the process succeeds or if the provided paths need attention.
 
+## Windows executable
+
+Want to distribute the GUI without requiring Python on the target machine? Use
+PyInstaller to build a standalone Windows executable:
+
+1. From a Windows command prompt or PowerShell session install the project and
+   PyInstaller into the same environment:
+
+   ```powershell
+   python -m pip install -e . pyinstaller
+   ```
+
+2. Generate the executable with a single command:
+
+   ```powershell
+   python build\tools\build_windows_exe.py
+   ```
+
+   (If you prefer, you can run `python -m PyInstaller build\tools\pokemon_randomizer_gui.spec`
+   directly.) PyInstaller uses a spec file configured to launch the GUI's
+   `main()` entry point without a console window and bundles the required
+   Tkinter resources.
+
+3. After the command finishes, open the `dist\PokemonRandomizerGui` directory
+   and double-click `PokemonRandomizerGui.exe`.
+
+To verify the packaged app, launch the executable, select a clean Generation I
+or II ROM, choose an output path for the randomized file, and click **Randomize**.
+The status bar should report success once the ROM has been processed. You can
+confirm the end-to-end flow by opening the randomized ROM in your preferred
+emulator and observing the new encounter tables.
+
 ### Useful command line flags
 
 * `--seed 12345` – specify a seed for reproducible results. Any string or
